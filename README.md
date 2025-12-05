@@ -61,15 +61,11 @@ Random Forest and LightGBM also showed competitive performance but XGBoost demon
 
 ### Prediction Error Analysis
 
-```html
 ![Prediction Error Analysis](./images/PREDICTION_ERROR_ANALYSIS.png)
-```
 
 ### Comprehensive Performance Dashboard
 
-```html
 ![Flight Price Prediction Performance Dashboard](./images/Flight_Price_Prediction_Model_Comprehensive_Performance_Dashboard.png)
-```
 
 ## Key Insights
 
