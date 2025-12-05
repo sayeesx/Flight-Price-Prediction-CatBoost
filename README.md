@@ -1,166 +1,124 @@
-# Flight Price Prediction — Machine Learning Project
+## Project Overview
 
-## Overview
-
-This project develops a complete end-to-end machine learning system to predict flight ticket prices using historical flight data. The goal is to build a production-grade model capable of estimating prices based on features such as airline, route, stops, flight duration, departure time, and arrival time.
-
-The dataset contains more than **10,600 flight booking records**, sourced from multiple domestic airline routes.
-
----
+This project focuses on predicting flight ticket prices using machine learning. The aim is to help travelers, booking platforms and travel management systems estimate ticket prices based on several travel-related features such as airline, number of stops, route, departure and arrival times, class type, travel duration and more. Multiple regression models were trained and evaluated to determine the most reliable model for production deployment.
 
 ## Objectives
 
-| Task                                      | Status    |
-| ----------------------------------------- | --------- |
-| Exploratory Data Analysis (EDA)           | Completed |
-| Predictive Model Training                 | Completed |
-| Model Comparison & Performance Evaluation | Completed |
-| Project Challenges & Technical Report     | Completed |
+1. Perform exploratory data analysis to understand pricing patterns
+2. Build and train multiple machine learning regression models
+3. Compare performance metrics and identify the best performing model
+4. Create a reusable prediction pipeline for real world inference
 
----
+## Dataset
 
-## Dataset Information
+The dataset contains flight booking records with the following core attributes
+Airline
+Source
+Destination
+Number of Stops
+Date of Journey
+Departure Time
+Arrival Time
+Duration
+Route
+Class
+Price (target variable)
 
-**Total samples:** 10,683
-**Total raw features:** 11
-**Target variable:** `Price`
+## Tools and Technologies
 
-| Column Name     | Description                    |
-| --------------- | ------------------------------ |
-| Airline         | Airline carrier                |
-| Date_of_Journey | Journey date                   |
-| Source          | Origin city                    |
-| Destination     | Destination city               |
-| Route           | Flight route                   |
-| Dep_Time        | Departure time                 |
-| Arrival_Time    | Arrival time                   |
-| Duration        | Total travel time              |
-| Total_Stops     | Number of stops                |
-| Additional_Info | Miscellaneous information      |
-| Price           | Ticket price (target variable) |
+Python
+Pandas
+NumPy
+Matplotlib
+Seaborn
+Scikit-learn
+XGBoost
+CatBoost
+LightGBM
+Jupyter Notebook
 
----
+## Methodology
 
-## Feature Engineering
+Data cleaning and preprocessing
+Feature engineering including date and time conversion duration extraction and categorical encoding
+Training and evaluation of six regression models
+Cross validation for stable performance estimation
+Final model selection based on accuracy and generalization capability
 
-More than **40 engineered features** were generated from the raw columns, including:
+## Model Training Results
 
-* Journey Day, Month, Year, Weekday, Weekend
-* Departure / Arrival Hour & Minute
-* Time-of-Day categories (Morning / Afternoon / Evening / Night)
-* Duration in minutes
-* Is_Direct_Flight indicator
-* Total_Stops encoded numerically
-* Route insights and categorical encodings
+Six models were trained and evaluated on R² RMSE MAE and MAPE metrics.
 
-Encoding Strategy:
+The best performing model
+XGBoost
+R² Score 0.5207
+RMSE ₹3013
+MAPE 24.86
 
-* One-Hot Encoding for low-cardinality categorical features
-* Label Encoding for high-cardinality features
+Random Forest and LightGBM also showed competitive performance but XGBoost demonstrated the most balanced results between accuracy and generalization.
 
----
+## Model Evaluation Visualizations
 
-## Machine Learning Workflow
+### Prediction Error Analysis
 
-Multiple regression algorithms were implemented and evaluated:
+<p align="center">
+  <img src="./images/PREDICTION ERROR ANALYSIS.png" width="750">
+</p>
 
-| Model                   | Status  |
-| ----------------------- | ------- |
-| Linear Regression       | Trained |
-| Decision Tree Regressor | Trained |
-| Random Forest Regressor | Trained |
-| XGBoost Regressor       | Trained |
-| LightGBM Regressor      | Trained |
-| CatBoost Regressor      | Trained |
+### Comprehensive Performance Dashboard
 
-Each model was evaluated using:
+<p align="center">
+  <img src="./images/Flight Price Prediction Model - Comprehensive Performance Dashboard.png" width="750">
+</p>
 
-* R² Score
-* RMSE (Root Mean Squared Error)
-* MAPE (Mean Absolute Percentage Error)
-* 5-Fold Cross-Validation
+## Key Insights
 
----
+Flight price is strongly influenced by airline class type and number of stops
+Premium airlines and business class significantly increase fares
+Prices rise during late night and early morning departures
+Direct flights generally cost more than flights with stops but the difference depends on the carrier
 
-## Final Model Performance
+## How to Run
 
-After hyperparameter tuning, **XGBoost** achieved the highest performance.
+1. Install required dependencies
 
-| Metric   | Tuned XGBoost |
-| -------- | ------------- |
-| R² Score | 0.8772        |
-| RMSE     | ₹1,525        |
-| MAPE     | 12.09%        |
-| CV-R²    | 0.8510        |
+```
+pip install -r requirements.txt
+```
 
-More than **55.6%** of predictions fall within **10% of the actual price**, and **32.1%** within **5%**.
+2. Run the notebook
 
----
+```
+jupyter notebook Flight_Price_Prediction.ipynb
+```
 
-## Saved Files for Deployment
+3. For prediction using saved model
 
-The following artifacts are exported for production use:
-
-| File                                   | Description                          |
-| -------------------------------------- | ------------------------------------ |
-| `flight_price_model_xgboost_tuned.pkl` | Final trained machine learning model |
-| `feature_names.pkl`                    | Feature list for preprocessing       |
-| `model_metadata.pkl`                   | Training metadata and configuration  |
-
----
-
-## How To Use
-
-1. Clone the repository
-2. Load `feature_names.pkl` to generate transformed input data
-3. Load `flight_price_model_xgboost_tuned.pkl` for prediction inference
-4. Ensure preprocessing logic matches the feature engineering steps from the notebook
-
----
+```
+python predict.py
+```
 
 ## Repository Structure
 
 ```
-/
-├── Flight_Price_Prediction_Complete_Capstone.ipynb
-├── flight_price_model_xgboost_tuned.pkl
-├── feature_names.pkl
-├── model_metadata.pkl
-├── README.md
-└── data/
-      └── Flight_Fare.xlsx
+project_root
+  ├── data
+  ├── images
+  ├── models
+  ├── notebooks
+  ├── src
+  ├── requirements.txt
+  ├── predict.py
+  └── README.md
 ```
 
----
+## Future Scope
 
-## Business Value
+Integration into a web based or mobile booking system
+Model retraining with real time data
+Introduction of seasonal factors and market demand indexing
+Deployment using Flask FastAPI or cloud services
 
-* Airlines can use this system to optimize dynamic pricing
-* Travel companies can provide fare predictions for customer planning
-* Users can estimate expected ticket costs before booking
-
----
-
-## Challenges & Solutions
-
-| Challenge                             | Solution                                                   |
-| ------------------------------------- | ---------------------------------------------------------- |
-| High cardinality categorical features | Hybrid encoding approach                                   |
-| Time parsing and duration extraction  | Custom transformation functions                            |
-| Model selection uncertainty           | Comparative evaluation of six ML models                    |
-| Initial low accuracy (R² = 0.52)      | Hyperparameter tuning increased performance to R² = 0.8772 |
-
----
-
-## Future Enhancements
-
-* Deployment as a REST API using FastAPI or Flask
-* Integration with live airline price scraper
-* LSTM/Transformer-based time-series forecasting
-* Web dashboard for prediction visualization
-
----
-
-## Authors
+## Author
 
 Muhammed Sayees
