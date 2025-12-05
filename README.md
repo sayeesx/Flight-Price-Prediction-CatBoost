@@ -11,49 +11,50 @@ This project focuses on predicting flight ticket prices using machine learning. 
 
 ## Dataset
 
-The dataset contains flight booking records with the following core attributes
-Airline
-Source
-Destination
-Number of Stops
-Date of Journey
-Departure Time
-Arrival Time
-Duration
-Route
-Class
-Price (target variable)
+The dataset contains flight booking records with the following core attributes:
+- Airline
+- Source
+- Destination
+- Number of Stops
+- Date of Journey
+- Departure Time
+- Arrival Time
+- Duration
+- Route
+- Class
+- **Price (target variable)**
 
 ## Tools and Technologies
 
-Python
-Pandas
-NumPy
-Matplotlib
-Seaborn
-Scikit-learn
-XGBoost
-CatBoost
-LightGBM
-Jupyter Notebook
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
+- XGBoost
+- CatBoost
+- LightGBM
+- Jupyter Notebook
 
 ## Methodology
 
-Data cleaning and preprocessing
-Feature engineering including date and time conversion duration extraction and categorical encoding
-Training and evaluation of six regression models
-Cross validation for stable performance estimation
-Final model selection based on accuracy and generalization capability
+- Data cleaning and preprocessing
+- Feature engineering including date and time conversion, duration extraction and categorical encoding
+- Training and evaluation of six regression models
+- Cross validation for stable performance estimation
+- Final model selection based on accuracy and generalization capability
 
 ## Model Training Results
 
-Six models were trained and evaluated on R² RMSE MAE and MAPE metrics.
+Six models were trained and evaluated on R², RMSE, MAE and MAPE metrics.
 
-The best performing model
-XGBoost
-R² Score 0.5207
-RMSE ₹3013
-MAPE 24.86
+| Metric | Value |
+|--------|-------|
+| **Best Model** | XGBoost |
+| **R² Score** | 0.5207 |
+| **RMSE** | ₹3,013 |
+| **MAPE** | 24.86% |
 
 Random Forest and LightGBM also showed competitive performance but XGBoost demonstrated the most balanced results between accuracy and generalization.
 
